@@ -13,6 +13,7 @@ import cz.kakosa.spaceshipgenerator.Generation.Parameters;
 
 public class MainActivity extends AppCompatActivity {
 
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getSupportActionBar().hide();
@@ -24,6 +25,10 @@ public class MainActivity extends AppCompatActivity {
         Parameters.setScreenHeight(imgShip.getHeight());
     }
 
+    /**
+     * Creates new ship from random seed and outputs the seed in seedTextNumber
+     * @param v View that called the method
+     */
     public void newRandomShip(View v){
 
         ImageView imgShip = findViewById(R.id.imgShip);
@@ -35,6 +40,10 @@ public class MainActivity extends AppCompatActivity {
         imgShip.setImageBitmap(ship);
     }
 
+    /**
+     * Creates new ship from seed given by user in seedTextNumber
+     * @param v View that called the method
+     */
     public void newSeededShip(View v){
 
 

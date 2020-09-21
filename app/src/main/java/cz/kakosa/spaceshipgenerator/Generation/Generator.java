@@ -27,10 +27,20 @@ public class Generator {
 
     MainActivity activity;
 
+    /**
+     * Creates new Random and stores the Activity that called the constructor.
+     * @param activity Activity that called the constructor (used to get the drawable files and to get access to elements on screen)
+     * @param seed Seed from which to generate the spaceship
+     */
     public Generator(MainActivity activity, int seed) {
         r = new Random(seed);
         this.activity = activity;
     }
+
+    /**
+     * Creates new seed from which it creates new Random Generator. Then outputs the seed into textBox on the main screen. Stores the Activity that called the constructor.
+     * @param activity Activity that called the constructor (used to get the drawable files and to get access to elements on screen)
+     */
     public Generator(MainActivity activity) {
         Random seedGenerator = new Random();
         int seed = seedGenerator.nextInt(1000000);
@@ -40,6 +50,10 @@ public class Generator {
         seedBox.setText(String.valueOf(seed));
     }
 
+    /**
+     * Creates a new ship with color scheme and dimensions defined in Parameters
+     * @return Bitmap with the generated ship on a transparent background
+     */
     public Bitmap generateNewShip() {
         width = Parameters.getWidth();
         height = Parameters.getHeight();
@@ -116,7 +130,7 @@ public class Generator {
 
     }
 
-    void interLineFill(int y0, int x00, int x01, int y1, int x10, int x11, int color){
+    void interLineFill(int y0, int x00, int x01, int y1, int x10, int x11){
         int shading = r.nextInt(tenthWidth/2);
         for (int y = y0; y <= y1; y++) {
             //By using double and alpha you could do anti-aliasing
@@ -157,7 +171,7 @@ public class Generator {
             xLast = xCurrent;
             xCurrent = Math.max(8, Math.min(halfWidth - 5, xLast + tenthWidth * 2 - r.nextInt(tenthWidth * 4)));
 
-            interLineFill(yLast, halfWidth - xLast, halfWidth + xLast, yCurrent,halfWidth - xCurrent, halfWidth + xCurrent, 0xffffffff);
+            interLineFill(yLast, halfWidth - xLast, halfWidth + xLast, yCurrent,halfWidth - xCurrent, halfWidth + xCurrent);
             segments++;
         }
 
@@ -204,9 +218,9 @@ public class Generator {
 
 
             if (d == -1)
-                interLineFill(yCurrent, x0Current, x1Current, yLast, x0Last, x1Last, 0xffffffff);
+                interLineFill(yCurrent, x0Current, x1Current, yLast, x0Last, x1Last);
             else
-                interLineFill(yLast, x0Last, x1Last, yCurrent, x0Current, x1Current, 0xffffffff);
+                interLineFill(yLast, x0Last, x1Last, yCurrent, x0Current, x1Current);
             segments++;
         }
     }
@@ -250,7 +264,7 @@ public class Generator {
             x0Current = Math.max(8, Math.min(width - 1 , x0Last + tenthWidth - r.nextInt(tenthWidth * 2)));
             x1Current =Math.min(width - 1,  Math.max(x0Current + 4, x1Last + tenthWidth - r.nextInt(tenthWidth * 2)));
 
-            interLineFill(yLast, x0Last, x1Last, yCurrent, x0Current, x1Current, 0xffffffff);
+            interLineFill(yLast, x0Last, x1Last, yCurrent, x0Current, x1Current);
 
             segments++;
         }
@@ -525,6 +539,9 @@ public class Generator {
         return 0xff000000 + (int) Math.min((red * factor), 0xff) * 0x10000 + (int) Math.min((green * factor), 0xff) * 0x100 + (int) Math.min((blue * factor), 0xff);
     }
 
+    /**
+     * Creates a color scheme and saves it in Parameters
+     */
     public void generateColors(){
 
         int color = randomColor();

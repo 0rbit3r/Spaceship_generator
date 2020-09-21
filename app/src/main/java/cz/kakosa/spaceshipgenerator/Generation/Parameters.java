@@ -4,10 +4,17 @@ public class Parameters {
 
     public static int width  = 100;
     public static int height = 100;
+
     public static int screenWidth;
     public static int screenHeight;
+
     public static int primaryColor;
     public static int secondaryColor;
+    public static int primaryGlassColor;
+    public static int secondaryGlassColor;
+    public static int primaryEffectColor;
+    public static int secondaryEffectColor;
+
 
     public static int getPrimaryColor() {
         return primaryColor;
@@ -56,11 +63,6 @@ public class Parameters {
     public static void setSecondaryEffectColor(int secondaryEffectColor) {
         Parameters.secondaryEffectColor = secondaryEffectColor;
     }
-
-    public static int primaryGlassColor;
-    public static int secondaryGlassColor;
-    public static int primaryEffectColor;
-    public static int secondaryEffectColor;
 
     public static int getScreenWidth() {
         return screenWidth;
