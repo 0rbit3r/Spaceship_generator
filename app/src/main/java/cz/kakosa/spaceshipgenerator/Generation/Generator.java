@@ -411,7 +411,7 @@ public class Generator {
         BitmapFactory.Options o = new BitmapFactory.Options();
         o.inScaled = false;
 
-        switch (r.nextInt(6)) {
+        switch (r.nextInt(7)) {
             case 0:
                 lightStrip = BitmapFactory.decodeResource(activity.getResources(), R.drawable.inner_1, o);
                 break;
@@ -429,6 +429,9 @@ public class Generator {
                 break;
             case 5:
                 lightStrip = BitmapFactory.decodeResource(activity.getResources(), R.drawable.inner_6, o);
+                break;
+            case 6:
+                lightStrip = BitmapFactory.decodeResource(activity.getResources(), R.drawable.inner_7, o);
                 break;
         }
         drawOver(lightStrip, x - 5, y - 5);
