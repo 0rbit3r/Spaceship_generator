@@ -37,12 +37,15 @@ public class MainActivity extends AppCompatActivity {
 
     public void newSeededShip(View v){
 
-        String a = "This is a test.";
-
 
         ImageView imgShip = findViewById(R.id.imgShip);
         TextView seedBox = findViewById(R.id.seedTextNumber);
-        int seed = Integer.valueOf(String.valueOf(seedBox.getText()));
+        String stringSeed = String.valueOf(seedBox.getText());
+        if (stringSeed.length() > 7) {
+            stringSeed = "9999999";
+            seedBox.setText(stringSeed);
+        }
+        int seed = Integer.valueOf(stringSeed);
         Generator gen = new Generator(this, seed);
 
         gen.generateColors();
