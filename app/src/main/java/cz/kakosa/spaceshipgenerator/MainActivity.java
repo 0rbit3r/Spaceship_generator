@@ -2,11 +2,9 @@ package cz.kakosa.spaceshipgenerator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import cz.kakosa.spaceshipgenerator.databinding.ActivityMainBinding;
